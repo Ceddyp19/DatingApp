@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from './models/user';
+import { AccountService } from './_services/account.service';
 //import { error } from 'console';
 
 @Component({
@@ -13,10 +15,10 @@ export class AppComponent implements OnInit {
   //turns off type safety in typescript (ie: users can by enay data type)
   users: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private accountService: AccountService) {}
   //when component inititialize getUser is invoked. Like lifecycle methods in React.js
   ngOnInit() {
-    this.getUsers();
+    this.setCurrentUser();
   }
 
   //makes a get request to api endpoint with all the users
@@ -27,12 +29,11 @@ export class AppComponent implements OnInit {
   //    console.log(error);
   //  })
   //}
-  getUsers() {
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error)
-    })
+  setCurrentUser(){
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    this.accountService.setCurrentUser(user);
   }
+
 }
 
 
