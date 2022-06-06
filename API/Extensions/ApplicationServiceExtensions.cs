@@ -13,7 +13,7 @@ namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
     {
-        public static IServerSideBlazorBuilder AddApplicationServices(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             // token creation service is scoped to last for the duration of the request
             services.AddScoped<ITokenService, TokenService>();
