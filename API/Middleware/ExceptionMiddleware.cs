@@ -9,7 +9,7 @@ using API.Errors;
 namespace API.Middleware
 {
     public class ExceptionMiddleware
-    {
+    {          
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
         private IHostEnvironment _env;
