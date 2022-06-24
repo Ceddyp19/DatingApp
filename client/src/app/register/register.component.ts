@@ -41,14 +41,14 @@ export class RegisterComponent implements OnInit {
   //check whether password fields match
   matchValues(matchTo: string): ValidatorFn {
     return (control: AbstractControl) => {
-      return control?.value === control?.parent?.controls[matchTo].value ? null : {isMatching: true}
+      return control?.value === control?.parent?.controls[matchTo].value
+        ? null : {isMatching: true}
     }
   }
 
   register() {
     this.accountService.register(this.registerForm.value).subscribe(response => {
       this.router.navigateByUrl('/members');
-      this.cancel();
     }, error => {
       this.validationErrors = error;
     })

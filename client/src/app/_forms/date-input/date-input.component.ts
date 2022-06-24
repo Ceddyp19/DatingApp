@@ -26,6 +26,4 @@ export class DateInputComponent implements ControlValueAccessor {
   }
   registerOnTouched(fn: any): void {
   }
-
-
 }

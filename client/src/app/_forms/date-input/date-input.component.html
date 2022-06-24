@@ -2,7 +2,8 @@
     <input 
         type="text"
         [class.is-invalid]='ngControl.touched && ngControl.invalid'
-        class="form-control"
+        class='form-control'
+        [formControl]="ngControl.control"
         placeholder="{{label}}"
         bsDatepicker
          [bsConfig]="bsConfig"
